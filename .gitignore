@@ -1,3 +1,4 @@
 .gradle
 .idea
 rest-content-service.iml
+/build/
