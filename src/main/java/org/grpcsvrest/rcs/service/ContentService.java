@@ -1,9 +1,11 @@
 package org.grpcsvrest.rcs.service;
 
 import org.grpcvsrest.content.ContentProducer;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+@Service
 public class ContentService {
 
     private final ContentProducer contentProducer;
