@@ -47,6 +47,26 @@ public class ContentControllerTest {
     }
 
     @Test
+    public void testContent_LastRecord() throws Exception {
+        // given
+        when(contentService.getByIndex(10000))
+                .thenReturn(new ContentDto(10000, "content", false));
+
+        // when
+        mockMvc.perform(
+                get("/content/10000")
+        ) // then
+                .andExpect(status().is(200))
+                .andExpect(content().json("{" +
+                        "\"id\": 10000," +
+                        "\"content\": \"content\"," +
+                        "\"next\": null" +
+                        "}"));
+
+    }
+
+
+    @Test
     public void testContent_InvalidIndex() throws Exception {
         // given
         when(contentService.getByIndex(0))
