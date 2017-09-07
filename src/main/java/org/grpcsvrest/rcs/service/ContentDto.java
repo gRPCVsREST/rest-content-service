@@ -23,7 +23,7 @@ public class ContentDto {
         return content;
     }
 
-    public boolean isHasNext() {
+    public boolean hasNext() {
         return hasNext;
     }
 
