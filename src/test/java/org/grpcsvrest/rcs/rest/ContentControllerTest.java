@@ -45,4 +45,19 @@ public class ContentControllerTest {
                         "}"));
 
     }
+
+    @Test
+    public void testContent_InvalidIndex() throws Exception {
+        // given
+        when(contentService.getByIndex(0))
+                .thenThrow(new IndexOutOfBoundsException("mock exception"));
+
+        // when
+        mockMvc.perform(
+                get("/content/0")
+        ) // then
+                .andExpect(status().is(404));
+
+    }
+
 }
