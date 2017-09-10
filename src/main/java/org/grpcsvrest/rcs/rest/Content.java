@@ -7,18 +7,21 @@ import com.google.common.base.MoreObjects;
 import java.util.Objects;
 
 public class Content {
+    @JsonProperty("id")
     private final int id;
+    @JsonProperty("content")
     private final String content;
-    private final String next;
+    @JsonProperty("next_id")
+    private final Integer nextId;
 
     @JsonCreator
     public Content(
             @JsonProperty("id") int id,
             @JsonProperty("content") String content,
-            @JsonProperty("next") String next) {
+            @JsonProperty("next_id") Integer nextId) {
         this.id = id;
         this.content = content;
-        this.next = next;
+        this.nextId = nextId;
     }
 
     public int getId() {
@@ -29,8 +32,8 @@ public class Content {
         return content;
     }
 
-    public String getNext() {
-        return next;
+    public Integer getNextId() {
+        return nextId;
     }
 
     @Override
@@ -40,12 +43,12 @@ public class Content {
         Content content1 = (Content) o;
         return id == content1.id &&
                 Objects.equals(content, content1.content) &&
-                Objects.equals(next, content1.next);
+                Objects.equals(nextId, content1.nextId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, next);
+        return Objects.hash(id, content, nextId);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class Content {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("content", content)
-                .add("next", next)
+                .add("nextId", nextId)
                 .toString();
     }
 }
