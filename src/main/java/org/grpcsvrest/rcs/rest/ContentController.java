@@ -25,7 +25,7 @@ public class ContentController {
     @GetMapping("/content/{id}")
     public Content getContent(@PathVariable("id") int id) {
         ContentDto contentDto = contentService.getByIndex(id);
-        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? urlPrefix + "/content/" + (id+1) : null);
+        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id+1 : null);
     }
 
     @ExceptionHandler(IndexOutOfBoundsException.class)
