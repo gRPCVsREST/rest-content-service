@@ -1,13 +1,21 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
 buildscript {
     repositories {
         jcenter()
     }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.1.0'
+    }
+
 }
 plugins {
     id 'java'
     id 'idea'
     id 'org.springframework.boot' version '1.5.6.RELEASE'
 }
+
+apply plugin: 'com.bmuschko.docker-remote-api'
 
 repositories {
     jcenter()
@@ -33,3 +41,12 @@ idea.module {
     testOutputDir = file('idea-test-build')
 }
 
+bootRepackage {
+    mainClass = 'org.grpcsvrest.rcs.Application'
+}
+
+task buildImage(type: DockerBuildImage) {
+    dependsOn jar
+    inputDir = project.projectDir
+    tag = 'restcontentservice'
+}
