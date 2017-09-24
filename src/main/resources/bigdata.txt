@@ -1,0 +1,10 @@
+impala
+flink
+hadoop
+druid
+seahorse
+spark
+titan
+atlassian
+akiban
+hekaton
