@@ -53,7 +53,7 @@ task buildImage(type: DockerBuildImage) {
 
 
 task buildDocker(type: DockerBuildImage) {
-    dependsOn jar
+    dependsOn bootRepackage
     inputDir = project.projectDir
     tag = 'restcontentservice:latest'
 }
