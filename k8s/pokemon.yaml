@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: rest-content-service
-          image: gcr.io/rgrpcvsrest/restcontentservice:latest
+          image: gcr.io/alien-fold-180922/restcontentservice:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
