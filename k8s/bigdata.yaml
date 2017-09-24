@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: rest-bigdata-content-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rest-bigdata-content
+    spec:
+      containers:
+        - name: rest-content-service
+          image: gcr.io/rgrpcvsrest/restcontentservice:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CONTENT_RESOURCE
+              value: "bigdata.txt"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-bigdata-content-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: rest-bigdata-content
+  ports:
+   - port: 8080
+     targetPort: 8080
+     protocol: TCP
+---
