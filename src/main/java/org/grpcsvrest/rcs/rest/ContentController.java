@@ -22,11 +22,18 @@ public class ContentController {
 
     }
 
-    @GetMapping("/content/{id}")
-    public Content getContent(@PathVariable("id") int id) {
+    @GetMapping(value = "/content/{id}", produces = "application/json", consumes = "application/json")
+    public Content getContentJson(@PathVariable("id") int id) {
         ContentDto contentDto = contentService.getByIndex(id);
         return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id+1 : null);
     }
+
+    @GetMapping(value = "/content/{id}", produces = "application/xml", consumes = "application/xml")
+    public Content getContentXml(@PathVariable("id") int id) {
+        ContentDto contentDto = contentService.getByIndex(id);
+        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id+1 : null);
+    }
+
 
     @ExceptionHandler(IndexOutOfBoundsException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)

@@ -26,7 +26,7 @@ public class ContentControllerTest {
     private ContentService contentService;
 
     @Test
-    public void testContent() throws Exception {
+    public void testContent_JSON() throws Exception {
         // given
         when(contentService.getByIndex(0))
                 .thenReturn(new ContentDto(0, "content", true));
@@ -43,6 +43,29 @@ public class ContentControllerTest {
                         "}"));
 
     }
+
+
+    @Test
+    public void testContent_XML() throws Exception {
+        // given
+        when(contentService.getByIndex(0))
+                .thenReturn(new ContentDto(0, "content", true));
+
+        // when
+        mockMvc.perform(
+                get("/content/0")
+                        .header("Content-Type", "application/xml")
+                        .header("Accept", "application/xml")
+        ) // then
+                .andExpect(status().is(200))
+                .andExpect(content().xml("<Content>" +
+                        "<id>0</id>"+
+                        "<content>content</content>" +
+                        "<next_id>1</next_id>" +
+                        "</Content>"));
+
+    }
+
 
     @Test
     public void testContent_LastRecord() throws Exception {
