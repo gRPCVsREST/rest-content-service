@@ -11,31 +11,29 @@ import org.springframework.web.bind.annotation.*;
 public class ContentController {
 
     private final ContentService contentService;
-    private final String urlPrefix;
 
     @Autowired
-    public ContentController(
-            ContentService contentService,
-            @Value("${url_prefix:http://localhost:8080}") String urlPrefix) {
+    public ContentController(ContentService contentService) {
         this.contentService = contentService;
-        this.urlPrefix = urlPrefix;
-
     }
 
-    @GetMapping(value = "/content/{id}", produces = "application/json", consumes = "application/json")
+    @GetMapping(value = "/content/{id}", produces = "application/json")
     public Content getContentJson(@PathVariable("id") int id) {
-        ContentDto contentDto = contentService.getByIndex(id);
-        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id+1 : null);
+        return content(id);
     }
 
     @GetMapping(value = "/content/{id}", produces = "application/xml", consumes = "application/xml")
     public Content getContentXml(@PathVariable("id") int id) {
-        ContentDto contentDto = contentService.getByIndex(id);
-        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id+1 : null);
+        return content(id);
     }
 
+    private Content content(@PathVariable("id") int id) {
+        ContentDto contentDto = contentService.getByIndex(id);
+        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id + 1 : null);
+    }
 
     @ExceptionHandler(IndexOutOfBoundsException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void handleBadIndex() {}
+    public void handleBadIndex() {
+    }
 }
