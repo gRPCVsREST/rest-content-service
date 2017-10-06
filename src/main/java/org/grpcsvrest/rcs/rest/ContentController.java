@@ -29,7 +29,7 @@ public class ContentController {
 
     private Content content(@PathVariable("id") int id) {
         ContentDto contentDto = contentService.getByIndex(id);
-        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id + 1 : null);
+        return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id + 1 : 1);
     }
 
     @ExceptionHandler(IndexOutOfBoundsException.class)

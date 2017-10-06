@@ -44,6 +44,24 @@ public class ContentControllerTest {
 
     }
 
+    @Test
+    public void testContent_JSON_LastElement() throws Exception {
+        // given
+        when(contentService.getByIndex(15))
+                .thenReturn(new ContentDto(15, "content", false));
+
+        // when
+        mockMvc.perform(
+                get("/content/15")
+        ) // then
+                .andExpect(status().is(200))
+                .andExpect(content().json("{" +
+                        "\"id\": 15," +
+                        "\"content\": \"content\"," +
+                        "\"next_id\": 1" +
+                        "}"));
+
+    }
 
     @Test
     public void testContent_XML() throws Exception {
