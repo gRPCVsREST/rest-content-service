@@ -3,7 +3,6 @@ package org.grpcsvrest.rcs.rest;
 import org.grpcsvrest.rcs.service.ContentDto;
 import org.grpcsvrest.rcs.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
