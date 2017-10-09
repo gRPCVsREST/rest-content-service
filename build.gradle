@@ -85,3 +85,11 @@ task undeployPokemon(type: Exec) {
 task undeployBigdata(type: Exec) {
     commandLine 'kubectl', 'delete', '-f', 'k8s/bigdata.yaml'
 }
+
+task undeploy() {
+    dependsOn undeployBigdata, undeployPokemon
+}
+
+task deploy() {
+    dependsOn deployBigdata, deployPokemon
+}

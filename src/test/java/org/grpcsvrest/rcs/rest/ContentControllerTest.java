@@ -44,6 +44,19 @@ public class ContentControllerTest {
 
     }
 
+    @Test
+    public void testContentIds() throws Exception {
+        // given
+        when(contentService.size()).thenReturn(4);
+
+        // when
+        mockMvc.perform(
+                get("/content/ids")
+        ) // then
+                .andExpect(status().is(200))
+                .andExpect(content().json("[1,2,3,4]"));
+
+    }
 
     @Test
     public void testContent_XML() throws Exception {

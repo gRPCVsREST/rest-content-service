@@ -22,4 +22,8 @@ public class ContentService {
     public ContentDto getByIndex(int i) {
         return new ContentDto(i, contentProducer.content().get(i), i < contentProducer.content().size() - 1);
     }
+
+    public int size() {
+        return contentProducer.content().size();
+    }
 }

@@ -22,6 +22,17 @@ public class ContentController {
         return content(id);
     }
 
+    @GetMapping(value = "/content/ids", produces = "application/json")
+    public int[] getContentJson() {
+        int[] result = new int[contentService.size()];
+        for (int i=0; i<contentService.size(); i++) {
+            result[i] = i+1;
+        }
+        return result;
+    }
+
+
+
     @GetMapping(value = "/content/{id}", produces = "application/xml", consumes = "application/xml")
     public Content getContentXml(@PathVariable("id") int id) {
         return content(id);
