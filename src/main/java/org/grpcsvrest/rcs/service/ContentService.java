@@ -20,7 +20,7 @@ public class ContentService {
     }
 
     public ContentDto getByIndex(int i) {
-        return new ContentDto(i, contentProducer.content().get(i), i < contentProducer.content().size() - 1);
+        return new ContentDto(i, contentProducer.content().get(i-1), i < contentProducer.content().size());
     }
 
     public int size() {

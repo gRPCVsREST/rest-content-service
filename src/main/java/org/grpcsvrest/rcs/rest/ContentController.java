@@ -38,7 +38,7 @@ public class ContentController {
         return content(id);
     }
 
-    private Content content(@PathVariable("id") int id) {
+    private Content content(int id) {
         ContentDto contentDto = contentService.getByIndex(id);
         return new Content(id, contentDto.getContent(), contentDto.hasNext() ? id + 1 : null);
     }

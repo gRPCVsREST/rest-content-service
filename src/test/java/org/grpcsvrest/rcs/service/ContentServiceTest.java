@@ -10,8 +10,8 @@ public class ContentServiceTest {
 
     @Test
     public void testGetByIndex() {
-        assertThat(service.getByIndex(0).hasNext()).isTrue();
-        assertThat(service.getByIndex(846).hasNext()).isFalse();
+        assertThat(service.getByIndex(1).hasNext()).isTrue();
+        assertThat(service.getByIndex(847).hasNext()).isFalse();
     }
 
 }
