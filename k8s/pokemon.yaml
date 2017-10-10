@@ -15,6 +15,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          env:
+            - name: CONTENT_RESOURCE
+              value: "pokemons.txt"
+            - name: spring_application_name
+              value: "rest-pokemons-content"
+
 ---
 apiVersion: v1
 kind: Service

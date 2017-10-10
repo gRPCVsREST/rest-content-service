@@ -18,6 +18,8 @@ spec:
           env:
             - name: CONTENT_RESOURCE
               value: "bigdata.txt"
+            - name: spring_application_name
+              value: "rest-bigdata-content"
 ---
 apiVersion: v1
 kind: Service
