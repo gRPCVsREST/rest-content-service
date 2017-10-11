@@ -26,11 +26,10 @@ kind: Service
 metadata:
   name: rest-bigdata-content-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: rest-bigdata-content
   ports:
    - port: 8080
-     targetPort: 8080
      protocol: TCP
 ---
