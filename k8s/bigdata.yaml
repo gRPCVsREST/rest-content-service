@@ -30,6 +30,6 @@ spec:
   selector:
     app: rest-bigdata-content
   ports:
-   - port: 8080
+   - tagetPort: 8080
      protocol: TCP
 ---
