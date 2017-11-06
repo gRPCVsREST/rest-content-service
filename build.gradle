@@ -88,6 +88,16 @@ task deployBigdata(type: Exec) {
     commandLine 'kubectl', 'create', '-f', 'k8s/bigdata.yaml'
 }
 
+task deployZrada(type: Exec) {
+    commandLine 'kubectl', 'create', '-f', 'k8s/zrada.yaml'
+}
+
+task deployPeremoga(type: Exec) {
+    commandLine 'kubectl', 'create', '-f', 'k8s/peremoga.yaml'
+}
+
+
+
 task undeployPokemon(type: Exec) {
     commandLine 'kubectl', 'delete', '-f', 'k8s/pokemon.yaml'
 }
@@ -96,10 +106,19 @@ task undeployBigdata(type: Exec) {
     commandLine 'kubectl', 'delete', '-f', 'k8s/bigdata.yaml'
 }
 
+task undeployZrada(type: Exec) {
+    commandLine 'kubectl', 'delete', '-f', 'k8s/zrada.yaml'
+}
+
+task undeployPeremoga(type: Exec) {
+    commandLine 'kubectl', 'delete', '-f', 'k8s/peremoga.yaml'
+}
+
+
 task undeploy() {
-    dependsOn undeployBigdata, undeployPokemon
+    dependsOn undeployBigdata, undeployPokemon, undeployZrada, undeployPeremoga
 }
 
 task deploy() {
-    dependsOn deployBigdata, deployPokemon
+    dependsOn deployBigdata, deployPokemon, deployZrada, deployPeremoga
 }
