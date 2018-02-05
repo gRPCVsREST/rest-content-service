@@ -116,9 +116,9 @@ task undeployPeremoga(type: Exec) {
 
 
 task undeploy() {
-    dependsOn undeployBigdata, undeployPokemon, undeployZrada, undeployPeremoga
+    dependsOn undeployBigdata, undeployPokemon //, undeployZrada, undeployPeremoga
 }
 
 task deploy() {
-    dependsOn deployBigdata, deployPokemon, deployZrada, deployPeremoga
+    dependsOn deployBigdata, deployPokemon //, deployZrada, deployPeremoga
 }
