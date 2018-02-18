@@ -37,8 +37,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'com.google.guava:guava:23.0'
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.1'
-    compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    compile 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+//    compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
+//    compile 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
     testCompile 'junit:junit:4.12'
 
